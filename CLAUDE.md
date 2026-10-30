@@ -67,6 +67,6 @@ Date planner PWA for exactly one couple. Plan and decisions: `docs/PLAN.md`. Set
   twice – prefer `getByRole` (ignores hidden elements) or `{ exact: true }` / `.filter({ visible: true })`.
 - **Timing in e2e:** CI is slower than the container. Wait for the UI that proves a state (e.g. the
   filter button showing the stored filter after hydration) instead of checking right after a load.
-- **After every push:** check the CI run (GitHub MCP `actions_list` → `list_workflow_runs`) until
+- **After every push:** check the CI run (GitHub MCP `actions_list` → `list_workflow_runs` if available, else `gh run list`) until
   it is green; a red run is fixed before the next task, never left for later.
 - Never run prettier (the repo has no config; it rewrites whole files).
