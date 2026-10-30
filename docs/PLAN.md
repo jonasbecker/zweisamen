@@ -10,7 +10,7 @@ Design-Richtung: [Canvas „Zweisamen Designrichtung“](https://claude.ai/artif
 | Thema | Entscheidung |
 |---|---|
 | Name | Zweisamen (Logo: Kaugummiautomat voller Herzen) |
-| Repo / Branch | `jonasbecker/date-o-mat`, direkt auf `main` |
+| Repo / Branch | `jonasbecker/zweisamen`, direkt auf `main` |
 | Kalender | mehrere Kalender pro Person auswählbar (`calendar.calendarlist.readonly`) |
 | Google OAuth | Status „In Produktion“, unverifiziert. Im Testmodus laufen Refresh-Tokens nach 7 Tagen ab. |
 | Zugang | `ALLOWED_EMAILS` + Einladungscode (6 Zeichen, 48 h, ab 2 Mitgliedern keine Beitritte mehr) |
