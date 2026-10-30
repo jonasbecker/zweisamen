@@ -96,20 +96,7 @@ Date planner PWA for exactly one couple. Plan and decisions: `docs/PLAN.md`. Set
   current round into "Kein Date" / "Ich schlage vor" / "<Partner> schlägt vor" / "Date steht" without planning together –
   the date (an idea from the list, `core/dev-date.ts`: 19:00 inside the round) is written as synced without an event id,
   so nothing goes to Google; "Kein Date" deletes test dates and cancels a real one the normal way. e2e: m34.
-- **Ideen-Kategorie (`docs/design/garten/ideen-kategorie/`, variante "e"):** `/ideas?ansicht=<kind>` is one component for
-  every tile, "alle.", the Matchlinge and "meine likes." (`ideas/category-view.tsx`; words, chips, tip order and groups
-  in `core/idea-category.ts`): its own head (back, title – long ones smaller, then an ellipsis –, subtitle, the flower
-  with a quip, tap = the next one; the bubble sits beside the flower for a short title on a wide screen, else up next to
-  the back button, never on the title), chips with counts (alle · gratis · ein Abend · drinnen · draußen; the view's
-  own dimension and empty ones left out), the flower's tip (what fits a free time in the next 7 days first, then what
-  the other one liked, never planned / planned longest ago, oldest; "anderer ↻" goes round; "Ins Beet pflanzen" =
-  `/plan?idea=…&start=…`, the plan flow picks that time when it is among its own) and the rest in "✓ passt diese
-  Woche" / "irgendwann" with like badges (a deck idea: who swiped it; a match: both). The free times come from
-  `server/idea-times.ts` (one FreeBusy per person via busy-cache, one slot search per length × ranking, daylight but
-  no weather) as a promise the view streams in (`<Suspense>` around tip and list – head and chips do not wait). New
-  ideas are added on the shelf (the field), not in a view. e2e: m31 (both sizes, every kind and chip).
-- **Ideen (Garten):** the seed shelf (`idea-tiles.tsx`, Matchlinge in pots; "Meine Likes" = `?ansicht=geswipt`
-  shows only my likes + matches).
+- Wer die Ideen-Seiten, Kacheln oder die Kategorie-Ansicht anfasst, liest zuerst `docs/features/ideen.md`.
 - **Archiv "unser beet." (`docs/design/garten/archiv/`):** `/dates` – every date a leaf, every round that fell through a
   wilted one (`cycles` skipped, with its called-off date), newest on top, Nº from the oldest (`core/archive.ts`,
   `server/archive.ts`): Stiel (Archiv.html's geometry 1:1 – month marks on the stem, the bud for the next date, leaves
