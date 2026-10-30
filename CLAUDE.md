@@ -81,21 +81,8 @@ Date planner PWA for exactly one couple. Plan and decisions: `docs/PLAN.md`. Set
   planning flow's filter / "was?" / "wann?" are dots 2–4 (`flowTop` in `plan-form.tsx`); once a date is proposed
   the Beet shows them as one lit bar (`StepDots all`). `/ideas` shows tiles; a tile opens `/ideas?ansicht=<kind>` (URL-driven, so the
   Ideen tab brings you back); there the view's own chips filter (see Ideen-Kategorie), elsewhere the one Filter button.
-- **Setup (Garten):** `/settings` is the garden shed (`setup-main.tsx`: "Wer gießt?", Gießrhythmus, Gießzeit, push
-  switch; calendars + "Freie Abende ab"; `flower-card.tsx`: the flower's name and pot – `couple_settings.flower_name`,
-  `flower_pot`, pots unlock at 10/25 lived dates, `core/bloom.ts`). `garden-banner.tsx` shows only when something is
-  missing (calendar, status – push is only the switch). The page is "einstellungen." (no "gartenschuppen"). "Mehr" (`?t=mehr`) lists the other topics.
+- Wer Einstellungen, Testdates oder das Test-Date (Dev-Tools) anfasst, liest zuerst `docs/features/einstellungen-und-dev.md`.
 - Wer den Swipe-Stapel, die Swipe-Karte oder die Banner anfasst, liest zuerst `docs/features/swipen.md`.
-- **Testdates (Einstellungen → Mehr → Testdates):** `server/demo-dates.ts` writes `core/demo-dates.ts` (seven past dates
-  with both / one / no reviews, notes, "nochmal?", a checklist, drawn photos – `demo/<n>.svg`, the photo route draws
-  them – and one round that fell through) as past rounds with `cycles.demo` and a negative seq; switching off deletes
-  those rounds (everything on them cascades). The round logic never sees them (`latestCycle`, `cycleAt`,
-  `cycleHistory`, the reminders' round filter `demo = false`), and they lie further back than the "wie war's?" window,
-  so no reminder or app icon number comes from them. They do count in the Archiv, the story and the stem. e2e: m29.
-- **Test-Date (dev tools, Einstellungen → Ihr zwei & Konto, `ENABLE_DEV_TOOLS=1`):** `server/dev-date.ts` puts the
-  current round into "Kein Date" / "Ich schlage vor" / "<Partner> schlägt vor" / "Date steht" without planning together –
-  the date (an idea from the list, `core/dev-date.ts`: 19:00 inside the round) is written as synced without an event id,
-  so nothing goes to Google; "Kein Date" deletes test dates and cancels a real one the normal way. e2e: m34.
 - Wer die Ideen-Seiten, Kacheln oder die Kategorie-Ansicht anfasst, liest zuerst `docs/features/ideen.md`.
 - Wer das Archiv, ein Blatt oder „wie war's?“ anfasst, liest zuerst `docs/features/archiv.md`.
 - Wer das Beet, das Date-Sheet („date steht.“) oder die Beet-Schritte anfasst, liest zuerst `docs/features/beet.md`.
