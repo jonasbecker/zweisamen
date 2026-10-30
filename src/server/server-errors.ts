@@ -29,8 +29,6 @@ export async function lastErrors(kind: ErrorKind): Promise<ServerErrors | null> 
   return row ? (row.value as ServerErrors) : null;
 }
 
-export const lastServerErrors = () => lastErrors("server");
-
 /** Never throws: it runs while handling another error. */
 export async function recordError(kind: ErrorKind, { message, path, device = null }: { message: string; path: string | null; device?: string | null }, now = new Date()): Promise<void> {
   try {

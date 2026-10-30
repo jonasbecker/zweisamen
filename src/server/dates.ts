@@ -62,11 +62,6 @@ export async function countDoneDates(coupleId: string): Promise<number> {
   return db.$count(datePlans, and(eq(datePlans.coupleId, coupleId), eq(datePlans.status, "done")));
 }
 
-/** How many dates were lived up to (and including) this start – the Nº of its leaf. */
-export async function countDoneDatesUntil(coupleId: string, startsAt: Date): Promise<number> {
-  return db.$count(datePlans, and(eq(datePlans.coupleId, coupleId), eq(datePlans.status, "done"), lte(datePlans.startsAt, startsAt)));
-}
-
 export async function upcomingDate(coupleId: string, now: Date): Promise<DatePlan | undefined> {
   const [date] = await db
     .select()
