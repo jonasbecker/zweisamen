@@ -20,12 +20,6 @@ function Icon({ children, ...props }: SVGProps<SVGSVGElement>) {
   );
 }
 
-export const HomeIcon = (p: SVGProps<SVGSVGElement>) => (
-  <Icon {...p}>
-    <path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
-  </Icon>
-);
-
 export const BulbIcon = (p: SVGProps<SVGSVGElement>) => (
   <Icon {...p}>
     <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z" />
@@ -240,19 +234,6 @@ export const TuneIcon = (p: SVGProps<SVGSVGElement>) => (
     <path d="M4 7h10M18 7h2M4 17h4M12 17h8" />
     <circle cx="16" cy="7" r="2" />
     <circle cx="10" cy="17" r="2" />
-  </Icon>
-);
-
-export const CameraIcon = (p: SVGProps<SVGSVGElement>) => (
-  <Icon strokeWidth={1.8} {...p}>
-    <path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
-    <circle cx="12" cy="13.5" r="3.5" />
-  </Icon>
-);
-
-export const CloseIcon = (p: SVGProps<SVGSVGElement>) => (
-  <Icon {...p}>
-    <path d="M6 6l12 12M18 6L6 18" />
   </Icon>
 );
 

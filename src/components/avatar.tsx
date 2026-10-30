@@ -36,12 +36,3 @@ export function Avatar({
     </span>
   );
 }
-
-export function AvatarPair({ a, b, size = 32 }: { a: AvatarPerson; b: AvatarPerson; size?: number }) {
-  return (
-    <span className="inline-flex items-center">
-      <Avatar person={a} size={size} />
-      <Avatar person={b} size={size} className="-ml-[7px]" />
-    </span>
-  );
-}
