@@ -77,7 +77,6 @@ export const DECK_THEMES = [
   { key: "learn", label: "Was lernen", prompt: "learning something together (workshops, courses, tours)" },
   { key: "night", label: "Abends unterwegs", prompt: "evenings out (bars, live music, night walks)" },
 ] as const;
-export type DeckTheme = (typeof DECK_THEMES)[number]["key"];
 
 /** Four themes per batch, rotating, so batch after batch covers everything. */
 export function pickThemes(batch: number, count = 4): Array<(typeof DECK_THEMES)[number]> {

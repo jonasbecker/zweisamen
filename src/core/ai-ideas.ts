@@ -8,7 +8,6 @@ export const AI_IDEA_COUNT = 3;
 
 export const BUDGETS = ["free", "low", "medium", "any"] as const;
 export type Budget = (typeof BUDGETS)[number];
-export const BUDGET_LABEL: Record<Budget, string> = { free: "Gratis", low: "bis 20 €", medium: "bis 50 €", any: "Egal" };
 const BUDGET_PROMPT: Record<Budget, string> = {
   free: "free of charge",
   low: "at most about 20 euros for both together",
@@ -18,7 +17,6 @@ const BUDGET_PROMPT: Record<Budget, string> = {
 
 export const MOODS = ["cozy", "active", "romantic", "creative", "surprise"] as const;
 export type Mood = (typeof MOODS)[number];
-export const MOOD_LABEL: Record<Mood, string> = { cozy: "🛋️ Gemütlich", active: "🏃 Aktiv", romantic: "💞 Romantisch", creative: "🎨 Kreativ", surprise: "🎲 Überrasch mich" };
 const MOOD_PROMPT: Record<Mood, string> = {
   cozy: "cozy and relaxed",
   active: "active, with some movement",
@@ -29,7 +27,6 @@ const MOOD_PROMPT: Record<Mood, string> = {
 
 export const SETTINGS = ["indoor", "outdoor", "any"] as const;
 export type SettingPref = (typeof SETTINGS)[number];
-export const SETTING_LABEL: Record<SettingPref, string> = { indoor: "🏠 Drinnen", outdoor: "🌳 Draußen", any: "Egal" };
 
 export type HourlyWeather = {
   time: string[]; // local "YYYY-MM-DDTHH:MM" (Open-Meteo with timezone=Europe/Berlin)
