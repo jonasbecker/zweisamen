@@ -26,8 +26,8 @@ Halte eine Notiz offen (z. B. im Passwortmanager), in die du alle Werte sammelst
 Voraussetzung: [Node.js 22 LTS](https://nodejs.org) ist installiert.
 
 ```bash
-git clone https://github.com/jonasbecker/date-o-mat.git
-cd date-o-mat
+git clone https://github.com/jonasbecker/zweisamen.git
+cd zweisamen
 npm install
 npm run gen:keys
 ```
@@ -48,7 +48,7 @@ VAPID_PRIVATE_KEY=…
 
 1. <https://console.neon.tech> öffnen → **Sign up with GitHub**.
 2. **Create project**
-   - Project name: `date-o-mat`
+   - Project name: `zweisamen`
    - Postgres version: Standard lassen
    - Region: **AWS Europe Central 1 (Frankfurt)**
 3. Im Projekt-Dashboard oben auf **Connect** klicken.
@@ -59,15 +59,15 @@ VAPID_PRIVATE_KEY=…
 ## 2. Vercel-Projekt anlegen
 
 1. <https://vercel.com/signup> → **Hobby** → **Continue with GitHub**.
-2. **Add New… → Project** → bei „Import Git Repository“ `date-o-mat` auswählen.
-   Taucht das Repo nicht auf: **Adjust GitHub App Permissions** → Zugriff auf `date-o-mat` erlauben.
+2. **Add New… → Project** → bei „Import Git Repository“ `zweisamen` auswählen.
+   Taucht das Repo nicht auf: **Adjust GitHub App Permissions** → Zugriff auf `zweisamen` erlauben.
 3. Framework Preset: **Next.js** (wird erkannt). Root Directory und Build Command **nicht** ändern.
 4. **Environment Variables** aufklappen und vorerst nur diese zwei eintragen:
    `DATABASE_URL` und `DATABASE_URL_UNPOOLED` (aus Schritt 1).
 5. **Deploy**. Der Build legt dabei automatisch die Tabellen in der Datenbank an.
 6. Danach **Settings → Domains** öffnen. Die Domain dort ist deine **App-URL**, z. B.
-   `https://date-o-mat.vercel.app`. Falls sie einen Zufallsanhang hat, kannst du sie über
-   **Edit** in etwas Hübsches ändern, z. B. `date-o-mat-jonas.vercel.app`.
+   `https://zweisamen.vercel.app`. Falls sie einen Zufallsanhang hat, kannst du sie über
+   **Edit** in etwas Hübsches ändern, z. B. `zweisamen-jonas.vercel.app`.
    → in die Notiz als `APP_URL` (mit `https://`, **ohne** `/` am Ende).
 
 Die App läuft jetzt schon, der Login aber noch nicht. Das ist normal.
@@ -263,7 +263,7 @@ Danach:
 ### Meilenstein 9 einrichten: Fotos
 
 1. In Vercel im Projekt **Storage → Create Database → Blob** wählen, Name z. B.
-   `date-o-mat-fotos`, Zugriff **Private**, Region **Frankfurt (fra1)**.
+   `zweisamen-fotos`, Zugriff **Private**, Region **Frankfurt (fra1)**.
 2. Prefix `BLOB` lassen und **unbedingt den Haken bei „Add a read-write token env var to this
    connection“ setzen** – nur dann legt Vercel `BLOB_READ_WRITE_TOKEN` an, an dem die App den
    Speicher erkennt. Dann **Create** / mit dem Projekt verbinden.
@@ -272,7 +272,7 @@ Danach:
    erscheint in der Vorschau und als Titelbild in der Liste.
 
 Platz: Ein Foto braucht mit Vorschau etwa 0,2–0,5 MB. Im Hobby-Plan ist 1 GB frei, das
-reicht für einige tausend Fotos. Stand unter **Storage → date-o-mat-fotos**.
+reicht für einige tausend Fotos. Stand unter **Storage → zweisamen-fotos**.
 
 ### Meilenstein 11: KI-Vorschläge
 
@@ -286,7 +286,7 @@ Kosten: grob 0,05 Cent pro Vorschlags-Runde; mehr als 20 Runden pro Tag lässt d
 1. Auf [console.anthropic.com](https://console.anthropic.com) ein Konto anlegen, unter
    **Billing** etwas Guthaben aufladen (5 $ reichen lange) und unter **Limits** ein
    monatliches Ausgabenlimit setzen, z. B. 5 $.
-2. **API Keys → Create Key**, Name z. B. `date-o-mat`, Schlüssel kopieren.
+2. **API Keys → Create Key**, Name z. B. `zweisamen`, Schlüssel kopieren.
 3. In Vercel unter **Settings → Environment Variables** `ANTHROPIC_API_KEY` eintragen
    (Production) und neu deployen.
 4. In der App **Einstellungen → Event-Quellen → Köln-Quellen hinzufügen**. Nach etwa einer
@@ -383,7 +383,7 @@ Vercel → **Deployments** → älteres Deployment → **⋯ → Promote to Prod
 
 **Backups:** Neon hält im Free-Plan einen Wiederherstellungszeitraum von einigen Stunden
 (**Branches → Restore**). Für mehr Sicherheit gelegentlich lokal sichern:
-`pg_dump "$DATABASE_URL_UNPOOLED" > date-o-mat-backup.sql`.
+`pg_dump "$DATABASE_URL_UNPOOLED" > zweisamen-backup.sql`.
 
 **Eine Person entfernen:** Adresse aus `ALLOWED_EMAILS` löschen und neu deployen. Die
 Person ist beim nächsten Seitenaufruf abgemeldet.

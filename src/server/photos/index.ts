@@ -11,14 +11,6 @@ import { photoStore } from "./store";
 
 export type UploadResult = { ok: true; id: string } | { ok: false; error: "off" | "not_found" | "full" | "invalid" | "storage" };
 
-export async function listPhotos(coupleId: string, dateId: string): Promise<DatePhoto[]> {
-  return db
-    .select()
-    .from(datePhotos)
-    .where(and(eq(datePhotos.coupleId, coupleId), eq(datePhotos.dateId, dateId)))
-    .orderBy(asc(datePhotos.createdAt));
-}
-
 /** The first photo of each date – the cover on the "Unsere Dates" list. */
 export async function coverPhotos(coupleId: string, dateIds: string[]): Promise<Map<string, string>> {
   if (dateIds.length === 0) return new Map();

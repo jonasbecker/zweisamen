@@ -141,11 +141,6 @@ async function lastSuperLike(userId: string): Promise<Date | null> {
   return row?.at ?? null;
 }
 
-/** Number of cards this person can still swipe (for the home tile). */
-export async function remainingCards(ctx: CoupleContext, now: Date): Promise<number> {
-  return (await openCardsFor(ctx, now)).cards.length;
-}
-
 // --- Swiping -------------------------------------------------------------------------------------
 
 /** How far ahead the card looks for a free evening. */

@@ -9,7 +9,6 @@ import type { IdeaSize } from "@/lib/domain";
 
 /** The old card pastels (ideas.color / deck_cards.color, no longer written – the banner brings its own). */
 export const CARD_COLORS = ["rose", "green", "butter", "sky", "lilac"] as const;
-export type CardColor = (typeof CARD_COLORS)[number];
 
 export type CardQuips = { neutral: string[]; like: string[]; nope: string[] };
 

@@ -491,7 +491,7 @@ scripts/              Migration beim Build, Secret-Generator
   Test-Umgebung, erzeugt Zertifikat und Schlüssel und lässt die Suites nacheinander laufen.
   Die Suites **leeren die Datenbank** – nur gegen eine Wegwerf-DB laufen lassen:
   ```bash
-  # einmal in .env.local: E2E_DATABASE_URL=postgres://…/dateomat_test
+  # einmal in .env.local: E2E_DATABASE_URL=postgres://…/zweisamen_test
   npm run e2e            # alle
   npm run e2e -- m5 m14  # einzelne
   ```

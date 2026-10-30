@@ -39,10 +39,8 @@ export const DATE_STATUSES = ["planned", "confirmed", "cancelled", "done"] as co
 export type DateStatus = (typeof DATE_STATUSES)[number];
 
 export const SYNC_STATUSES = ["pending", "synced", "error"] as const;
-export type SyncStatus = (typeof SYNC_STATUSES)[number];
 
 export const SUGGESTION_STATUSES = ["pending", "accepted", "rejected"] as const;
-export type SuggestionStatus = (typeof SUGGESTION_STATUSES)[number];
 
 export const NOTIFICATION_TYPES = [
   "turn_started",
@@ -75,7 +73,6 @@ export type NotificationType = (typeof NOTIFICATION_TYPES)[number];
 export const NOTIFICATIONS_OFF_BY_DEFAULT: readonly NotificationType[] = ["errors"];
 
 export const CONNECTION_STATUSES = ["ok", "needs_reauth"] as const;
-export type ConnectionStatus = (typeof CONNECTION_STATUSES)[number];
 
 /** Review after a date: 1–5 hearts. */
 export const RATING_MIN = 1;
@@ -94,8 +91,6 @@ export type EventSourceKind = (typeof EVENT_SOURCE_KINDS)[number];
 export const FETCH_STATUSES = ["ok", "empty", "error"] as const;
 /** Who added a sub-page of an event source. */
 export const SOURCE_PAGE_ORIGINS = ["ai", "user"] as const;
-export type SourcePageOrigin = (typeof SOURCE_PAGE_ORIGINS)[number];
-export type FetchStatus = (typeof FETCH_STATUSES)[number];
 
 export const EVENT_KINDS = ["event", "tip"] as const;
 export type EventKind = (typeof EVENT_KINDS)[number];
@@ -118,7 +113,6 @@ export type AiRequestKind = (typeof AI_REQUEST_KINDS)[number];
 export const DECK_CARD_KINDS = ["idea", "combo", "revisit"] as const;
 export type DeckCardKind = (typeof DECK_CARD_KINDS)[number];
 export const DECK_CARD_STATUSES = ["open", "matched", "passed", "expired"] as const;
-export type DeckCardStatus = (typeof DECK_CARD_STATUSES)[number];
 export const SWIPE_VERDICTS = ["like", "super", "nope", "maybe"] as const;
 export type SwipeVerdict = (typeof SWIPE_VERDICTS)[number];
 export const PLACE_SETTINGS = ["indoor", "outdoor"] as const;

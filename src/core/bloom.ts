@@ -4,8 +4,6 @@
 // the drawing is components/bloom.tsx.
 
 export type Stimmung = "schlaeft" | "wartet" | "froh" | "blueht" | "traurig" | "genervt" | "autsch";
-/** The moods of a round (§3). `genervt` / `autsch` are only for the date sheet (date-steht/DATE-STEHT.md §4). */
-export const STIMMUNGEN: readonly Stimmung[] = ["schlaeft", "wartet", "froh", "blueht", "traurig", "genervt", "autsch"];
 
 export const BLOOM_BOX = { width: 300, height: 420 } as const;
 /** Leaves on the flower; older dates are in the Archiv. */

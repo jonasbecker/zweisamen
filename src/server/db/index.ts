@@ -16,4 +16,3 @@ const pool =
 globalForDb.pgPool = pool;
 
 export const db = drizzle(pool, { schema, casing: "snake_case" });
-export type Db = typeof db;
