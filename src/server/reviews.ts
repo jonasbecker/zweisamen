@@ -6,6 +6,7 @@ import type { ReviewDate } from "@/core/reminders";
 import type { CoupleContext } from "@/server/auth/dal";
 import { db } from "@/server/db";
 import { datePlans, dateReviews, type DatePlan, type DateReview } from "@/server/db/schema";
+import { isDemoUser } from "@/server/demo-partner";
 
 export type PastDate = DatePlan & { reviews: DateReview[] };
 
@@ -48,6 +49,7 @@ export async function saveReview(ctx: CoupleContext, dateId: string, input: Revi
       target: [dateReviews.dateId, dateReviews.userId],
       set: { rating: input.rating, note: input.note, again: input.again },
     });
+  if (isDemoUser(ctx.partner)) await db.insert(dateReviews).values({ dateId, userId: ctx.partner.id, again: "yes" }).onConflictDoNothing();
   return true;
 }
 

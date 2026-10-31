@@ -5,6 +5,8 @@ import { redirect } from "next/navigation";
 import { normalizeInviteCode } from "@/lib/invite-code";
 import { requireUser } from "@/server/auth/dal";
 import { countMembers, createCouple, joinCouple, renewInviteCode, type JoinResult } from "@/server/couples";
+import { createDemoCouple } from "@/server/demo-partner";
+import { env } from "@/server/env";
 
 export type JoinState = { error?: string; code?: string };
 
@@ -24,6 +26,15 @@ export async function createCoupleAction() {
   // The browser keeps visited pages a while (staleTimes): drop them, the next one shows the new state.
   refresh();
   redirect("/pair");
+}
+
+/** Dev tools: a couple with a made-up partner who says yes to everything (server/demo-partner.ts). */
+export async function createDemoCoupleAction() {
+  const user = await requireUser();
+  if (!env().devTools) return;
+  if (!user.coupleId) await createDemoCouple(user);
+  refresh();
+  redirect(user.onboardedAt ? "/" : "/welcome");
 }
 
 export async function renewInviteAction() {

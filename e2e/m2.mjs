@@ -54,7 +54,7 @@ const a = await pageFor(tokenA);
 const b = await pageFor(tokenB);
 await a.goto(`${BASE}/ideas?ansicht=alle`);
 await b.goto(`${BASE}/ideas?ansicht=alle`);
-check("empty state on a fresh wishlist", await a.getByText("hier wächst grad nix. anderer filter?").isVisible({ timeout: 15000 }).catch(() => false));
+check("empty state on a fresh wishlist", await a.getByText("hier wächst grad nix. anderer filter?").waitFor({ timeout: 15000 }).then(() => true, () => false));
 await a.screenshot({ path: `${SHOTS}m2-01-empty.png` });
 
 // Quick add: tap +, type, Enter
