@@ -16,3 +16,8 @@ Moved verbatim from CLAUDE.md.
   current round into "Kein Date" / "Ich schlage vor" / "<Partner> schlägt vor" / "Date steht" without planning together –
   the date (an idea from the list, `core/dev-date.ts`: 19:00 inside the round) is written as synced without an event id,
   so nothing goes to Google; "Kein Date" deletes test dates and cancels a real one the normal way. e2e: m34.
+- **Demo partner (dev tools, `/pair` "Mit Demo-Partner testen", `ENABLE_DEV_TOOLS=1`):** `server/demo-partner.ts` makes a
+  couple with a made-up Sam (`google_sub` `demo:…`, email `@zweisamen.invalid`, never logs in) and writes the Testdates.
+  Sam's calendar connection has no calendars (`queryFreeBusy` answers "free" without Google), says yes to every date
+  right after `saveDate`, likes every card (`swipe`) and answers every review "nochmal: ja". Dates of a demo couple
+  never go to Google (`syncDate`). e2e: m35.

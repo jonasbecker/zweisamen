@@ -10,7 +10,7 @@ import { formatInviteCode } from "@/lib/invite-code";
 import { requireUser } from "@/server/auth/dal";
 import { countMembers, getCouple } from "@/server/couples";
 import { env } from "@/server/env";
-import { createCoupleAction, renewInviteAction } from "./actions";
+import { createCoupleAction, createDemoCoupleAction, renewInviteAction } from "./actions";
 import { InviteShare } from "./invite-share";
 import { JoinForm } from "./join-form";
 
@@ -56,6 +56,17 @@ async function Pairing({ searchParams }: { searchParams: PageProps<"/pair">["sea
           <h2 className="text-[17px] font-bold">Ich habe einen Code</h2>
           <JoinForm defaultCode={prefill} />
         </Card>
+        {env().devTools && (
+          <Card className="flex flex-col gap-3">
+            <h2 className="text-[17px] font-bold">Allein ausprobieren</h2>
+            <p className="text-muted">Sam ist erfunden: sagt zu allem ja, und euer Archiv hat schon ein paar Dates.</p>
+            <form action={createDemoCoupleAction}>
+              <Button type="submit" variant="secondary" className="w-full">
+                Mit Demo-Partner testen
+              </Button>
+            </form>
+          </Card>
+        )}
       </>
     );
   }

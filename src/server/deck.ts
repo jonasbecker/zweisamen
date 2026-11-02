@@ -31,6 +31,7 @@ import { getCoupleSettings, slotRulesFrom } from "@/server/settings";
 
 import { openCardsFor, stillValid } from "@/server/deck-open";
 import { STALE_REFILL_MS } from "@/server/deck-refill";
+import { isDemoUser } from "@/server/demo-partner";
 
 // The pieces that moved out stay importable from here, so callers keep one door.
 export { DECK_MODEL, refillDeck, type RefillResult } from "@/server/deck-refill";
@@ -229,6 +230,7 @@ export async function swipe(ctx: CoupleContext, cardId: string, verdict: SwipeVe
       })
       .returning();
     if (inserted.length === 0) return { ok: false, error: "gone" } as const;
+    if (isDemoUser(ctx.partner)) await tx.insert(deckSwipes).values({ cardId, userId: ctx.partner.id, verdict: "like" }).onConflictDoNothing();
     const [partner] = await tx
       .select({ verdict: deckSwipes.verdict })
       .from(deckSwipes)

@@ -76,6 +76,7 @@ type FreeBusyResponse = {
 
 /** Busy times only – Google never sends titles or details for this endpoint. */
 export async function queryFreeBusy(userId: string, calendarIds: string[], from: Date, to: Date): Promise<FreeBusyResult> {
+  if (!calendarIds.length) return { busy: [], failedCalendarIds: [] }; // e.g. the demo partner
   const result = await calendarRequest<FreeBusyResponse>(userId, "/freeBusy", {
     method: "POST",
     body: JSON.stringify({

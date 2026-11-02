@@ -11,6 +11,7 @@ import type { CoupleContext } from "@/server/auth/dal";
 import { coupleNow } from "@/server/clock";
 import { db } from "@/server/db";
 import { cycles, datePlans, events, ideas, suggestions, users, type DatePlan } from "@/server/db/schema";
+import { DEMO_EMAIL_DOMAIN, isDemoUser } from "@/server/demo-partner";
 import { env } from "@/server/env";
 import { formatTimeRange } from "@/lib/format";
 import { sendToUser } from "@/server/push";
@@ -234,6 +235,7 @@ export async function saveDate(ctx: CoupleContext, choice: DateChoice, now: Date
 
   await ensureCurrentCycle(ctx.coupleId, now); // round status → planned
   const synced = await syncDate(savedId);
+  if (isDemoUser(ctx.partner)) await confirmDate({ user: ctx.partner, partner: ctx.user, coupleId: ctx.coupleId }, savedId, now);
   return { ok: true, dateId: savedId, synced };
 }
 
@@ -364,6 +366,11 @@ export async function syncDate(dateId: string): Promise<boolean> {
     } else {
       const partnerEmail = await partnerEmailOf(date);
       if (!partnerEmail) throw new Error("Couple has no partner");
+      // Demo partner: nobody to invite – the date stays in the app (synced, no event id: the read-back leaves it alone).
+      if (partnerEmail.endsWith(DEMO_EMAIL_DOMAIN)) {
+        await db.update(datePlans).set({ syncStatus: "synced", syncError: null }).where(eq(datePlans.id, date.id));
+        return true;
+      }
       const [idea] = date.ideaId
         ? await db.select({ costEur: ideas.costEur }).from(ideas).where(eq(ideas.id, date.ideaId)).limit(1)
         : [];
